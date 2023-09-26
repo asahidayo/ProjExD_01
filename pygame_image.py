@@ -13,28 +13,32 @@ def main():
     img_uutori=pg.transform.rotozoom(img_utori,5,1.0)
     bg_bimg=pg.transform.flip(bg_img,True,False)
     tmr = 0
-    tori=[img_tori,img_uutori,img_utori]
+    tori=[img_tori,img_uutori,img_utori,img_uutori]
     #bg=[bg_bimg,bg_img]
     x=0
-    count=0
+    y=0
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
-        screen.blit(bg_img, [-x, 0])
-        #screen.blit(bg_img,[1600-x,0])
-        
-        screen.blit(bg_img,[-x,0])
-        screen.blit(bg_bimg,[1600-x,0])
-        screen.blit(tori[tmr%3],[300,200])
-        
+        if x==-2400:
+            x=800
+        screen.blit(bg_img,[x,0])
+
+        if y==-3200:
+            y=0
+        screen.blit(bg_bimg,[y+1600,0])
+
+        screen.blit(tori[tmr%4],[300,200])
+
         
         
         pg.display.update()
-        
+        x-=5
+        y-=5
         tmr += 1 
         
-        x+=5
+        
         #if x==1600:
            # count+=1
            # x-=800
@@ -46,7 +50,7 @@ def main():
         
         
 
-        clock.tick(50)
+        clock.tick(100)
         #move_ip
 
 
